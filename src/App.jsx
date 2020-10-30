@@ -1,12 +1,15 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import   './App.css'
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import routes from "./config/routes.js";
 export default class App extends Component {
   render() {
     return (
       <Router>
-        <h1 className="app">App...</h1>
+        <Switch>
+          {routes.map((route) => {
+            return <Route {...route} key={route.path}></Route>;
+          })}
+        </Switch>
       </Router>
     );
   }
